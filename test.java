@@ -128,7 +128,7 @@ public class Test {
 		Test test=new Test();
 		
          int n =0;
-		while (n != 1 && n !=2  )
+		while (n != 1 || n !=2  )
 		{
 		System.out.println("do you want me to be the code maker or breaker ? answer with either 1 or 2");
 		
