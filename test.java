@@ -78,24 +78,26 @@ public class Test {
 }
 	
 	// computer is the code maker ! 
-	public void checkresult (int correctinteger, int userinput ) {
-		Scanner reader = new Scanner(System.in);
-		while (this.comparenumber(userinput,correctinteger).equals ("bbbb")==false) {
-           
-			System.out.println("result  for "+userinput+" is : "+ this.comparenumber(userinput,correctinteger));
-			System.out.println("repeat agin " );
-		    userinput = reader.nextInt();
+	public boolean checkresult (int correctinteger, int userinput ) {
+		String result=this.comparenumber(userinput,correctinteger);
+		if (result.equals ("bbbb")==false) {
+			System.out.println(" result for "+userinput +" is : "+result );
+           return false;
 		}
+		return true;
 	}
-	
+	// computer is the code breaker
 	public void codebreaker (){
 		
 		System.out.println(" Ok ! I'm the code breaker , please enter a number and let me guess it ..... " );
 		Scanner reader = new Scanner(System.in);
 	    int correctinteger = reader.nextInt();
 		int userinput= this.randInt();
-		this.checkresult(correctinteger,userinput );
-		//System.out.println(correctinteger);
+		while (this.checkresult(correctinteger,userinput )==false){
+			userinput= this.randInt();
+			
+		}
+		System.out.println(correctinteger);
 		
 		
 		
@@ -113,7 +115,11 @@ public class Test {
 		Scanner reader = new Scanner(System.in);
 	    int userinput = reader.nextInt();
 		
-		this.checkresult(correctinteger,userinput );
+		while (this.checkresult(correctinteger,userinput )==false){
+		System.out.println("repeat please " );
+	     userinput = reader.nextInt();
+			
+		}
 		
 				System.out.println("congratulation" );
 	//	}
@@ -128,7 +134,7 @@ public class Test {
 		Test test=new Test();
 		
          int n =0;
-		while (n != 1 || n !=2  )
+		while (n != 1 && n !=2  )
 		{
 		System.out.println("do you want me to be the code maker or breaker ? answer with either 1 or 2");
 		
@@ -146,7 +152,7 @@ public class Test {
 				
 				 break;
 			}
-		    default: System.out.println(" Your input is false ");
+		    default: System.out.println(" Your input is false , it should be either 1 or 2");
                      break;
 		
 		}
